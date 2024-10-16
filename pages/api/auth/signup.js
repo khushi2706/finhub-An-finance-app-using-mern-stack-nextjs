@@ -2,7 +2,7 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import clientPromise from '../../../lib/mongodb'
-import User from '../../../models/User'
+import User from '../../../models/User.models'
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
