@@ -5,7 +5,6 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     const { name, email, phone } = req.body;
 
-    // Validate input
     if (!name || !email || !phone) {
       return res.status(400).json({ message: "All fields are required" });
     }
@@ -25,16 +24,23 @@ export default async function handler(req, res) {
           .json({ message: "Email or phone number already exists!" });
       }
 
-      // Insert new contact into the contacts collection
       const newContact = new ContactUs({ name, email, phone });
 
-      await db.collection("contacts").insertOne(newContact);
+      await newContact.save();
 
       return res
         .status(201)
         .json({ message: "Contact information submitted successfully" });
     } catch (error) {
       console.error("Contact submission error:", error);
+
+      if (error.name === "ValidationError") {
+        const errorMessage = Object.values(error.errors)
+          .map((err) => err.message)
+          .join(", ");
+
+        return res.status(400).json({ message: errorMessage });
+      }
       return res
         .status(500)
         .json({ message: "Error: Contact submission failed" });

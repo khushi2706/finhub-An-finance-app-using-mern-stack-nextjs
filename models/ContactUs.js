@@ -19,7 +19,6 @@ const ContactUsSchema = new mongoose.Schema({
     unique: true,
     validate: {
       validator: function (v) {
-        // Ensure the phone number has exactly 10 digits
         return /^\d{10}$/.test(v);
       },
       message: "Phone number must be a 10-digit number",
