@@ -4,6 +4,12 @@ import ContactUs from "../../../models/ContactUs";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const { name, email, phone } = req.body;
+    // console.log(name, " ", email, " ", phone);
+    if (!/^\d{10}$/.test(phone)) {
+      return res
+        .status(400)
+        .json({ message: "Phone number must be 10 digits" });
+    }
 
     if (!name || !email || !phone) {
       return res.status(400).json({ message: "All fields are required" });
@@ -25,8 +31,9 @@ export default async function handler(req, res) {
       }
 
       const newContact = new ContactUs({ name, email, phone });
+      // console.log(newContact);
 
-      await newContact.save();
+       await db.collection("contacts").insertOne(newContact);
 
       return res
         .status(201)
