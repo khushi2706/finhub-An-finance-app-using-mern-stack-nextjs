@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
 
 export default function SignIn() {
   const [email, setEmail] = useState('')
@@ -16,9 +17,10 @@ export default function SignIn() {
     const data = await res.json()
     if (res.ok) {
       localStorage.setItem('token', data.token)
-      router.push('/')
+      router.push('/');
+      toast.success("Login Successful",{position:'bottom-right'});
     } else {
-      alert(data.message)
+      toast.error("Failed to Login!");
     }
   }
 

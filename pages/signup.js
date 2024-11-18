@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 export default function SignUp() {
   const [name, setName] = useState('');
@@ -18,8 +19,9 @@ export default function SignUp() {
     if (res.ok) {
       localStorage.setItem('token', data.token);
       router.push('/');
+      toast.success("Registration successful",{position:'bottom-right'});
     } else {
-      alert(data.message);
+      toast.error("Failed to register",{position:'bottom-right'});
     }
   };
 
