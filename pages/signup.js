@@ -30,12 +30,6 @@ export default function SignUp() {
       <div className="max-w-md w-full space-y-8 p-8 bg-white shadow-lg rounded-lg">
         <div>
           <h2 className="text-center text-3xl font-extrabold text-gray-900">Create An Account</h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Or{' '}
-            <a href="/signin" className="font-medium text-indigo-600 hover:text-indigo-500">
-              sign in to your account
-            </a>
-          </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
@@ -90,6 +84,12 @@ export default function SignUp() {
             </button>
           </div>
         </form>
+        <p className="mt-4 text-center text-sm text-gray-600">
+          Already have an account?{' '}
+          <a href="/signin" className="font-medium text-indigo-600 hover:text-indigo-500">
+            Sign in here
+          </a>
+        </p>
       </div>
     </div>
   );
