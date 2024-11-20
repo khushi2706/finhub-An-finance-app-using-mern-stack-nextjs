@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
+import { Eye,EyeOff } from 'lucide-react';
 
 export default function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword,setShowPassword] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -24,6 +26,10 @@ export default function SignUp() {
       toast.error("Failed to register",{position:'bottom-right'});
     }
   };
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -60,12 +66,12 @@ export default function SignUp() {
                 required
               />
             </div>
-            <div>
+            <div className='relative'>
               <label htmlFor="password" className="sr-only">Password</label>
               <input
                 id="password"
                 name="password"
-                type="password"
+                type={showPassword ? 'text':'password'}
                 autoComplete="current-password"
                 className="appearance-none rounded-md block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 placeholder="Password"
@@ -73,6 +79,11 @@ export default function SignUp() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <div className='absolute mt-2 inset-y-0 right-2 items-center'>
+                <button type='button' onClick={handleTogglePassword} className='text-gray-500 hover:text-gray-700 focus:outline-none'>
+                  {showPassword ? <EyeOff className='w-5 h-5' /> : <Eye className='w-5 h-5' />}
+                </button>
+              </div>
             </div>
           </div>
           <div>
