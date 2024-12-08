@@ -39,12 +39,12 @@ export default function contactUs() {
       <div className="w-full h-[15rem] bg-green-100 flex flex-col justify-center items-center">
         <h1 className="text-black font-bold text-[2rem]">Contact Us</h1>
         <p className="w-[80%] p-5 font-medium text-md">
-          we believe every health journey is unique. Our certified doctors and
-          healthcare professionals are here to support you every step of the
-          way. From comprehensive risk assessments and personalized wellness
-          plans to preventive care and ongoing guidance, we’re dedicated to
-          helping you achieve your health goals. Our team is here to provide the
-          expert care and support you need for a healthier life.
+          We believe every financial journey is unique. Our certified financial
+          advisors and experts are here to support you every step of the way.
+          From comprehensive risk assessments and personalized financial plans
+          to wealth management and ongoing guidance, we’re dedicated to helping
+          you achieve your financial goals. Our team is here to provide the
+          expert advice and support you need for a secure and prosperous future.
         </p>
       </div>
       <div className="flex justify-center mt-10">
@@ -55,13 +55,14 @@ export default function contactUs() {
             </h1>
             <p className="text-sm mt-2 text-gray-700">
               Need advice or have questions? Contact us to schedule a
-              consultation with our Health Advisory Team. We'll assess your
-              health needs and create a personalized wellness plan just for you.
+              consultation with our Financial Advisory Team. We'll assess your
+              financial needs and create a personalized plan tailored just for
+              you.
             </p>
           </div>
           <div className="w-1/2 bg-green-600 p-6 flex flex-col justify-center items-center">
             <h2 className="text-lg font-semibold text-white">
-              Contact the Health Advisory Team
+              Contact the Financial Advisory Team
             </h2>
             <form className="mt-4 w-full" onSubmit={handleForm}>
               <input
